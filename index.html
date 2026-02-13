@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
 <head>
   <title>For You 💖</title>
@@ -149,16 +149,16 @@
     }
     setInterval(createHeart, 300);
 
-    // Sparkles on page 2
+    // Sparkles falling continuously (all pages)
     function createSparkle() {
-      if (currentPage !== 2) return;
       const sparkle = document.createElement("div");
       sparkle.classList.add("sparkle");
       sparkle.innerHTML = "✨";
       sparkle.style.left = (Math.random() * 100) + "vw";
-      sparkle.style.animation = `float ${(Math.random()*4+2)}s linear forwards`;
+      sparkle.style.fontSize = (Math.random()*25+15) + "px";
+      sparkle.style.animation = `float ${(Math.random()*5+3)}s linear forwards`;
       document.body.appendChild(sparkle);
-      setTimeout(() => sparkle.remove(), 5000);
+      setTimeout(() => sparkle.remove(), 6000);
     }
     setInterval(createSparkle, 400);
 
