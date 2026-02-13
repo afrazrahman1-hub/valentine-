@@ -23,21 +23,21 @@
 
     section.active { opacity: 1; }
 
-    h1 { font-size: 40px; color: #ff66a3; }
-    p { font-size: 18px; color: #ff85b3; max-width: 600px; margin: 20px auto; }
+    h1 { font-size: 50px; color: #ff66a3; }
+    p { font-size: 22px; color: #ff85b3; max-width: 700px; margin: 30px auto; line-height: 1.5; }
 
     button {
-      padding: 10px 20px;
-      font-size: 18px;
+      padding: 12px 25px;
+      font-size: 20px;
       background: #ff66a3;
       border: none;
       color: white;
       border-radius: 10px;
       cursor: pointer;
-      margin: 10px;
+      margin: 15px;
       transition: 0.3s;
       position: relative;
-      z-index: 10; /* buttons on top */
+      z-index: 10;
     }
 
     button:hover { transform: scale(1.1); }
@@ -45,7 +45,7 @@
     .heart, .sparkle, .click-heart, .petal, .confetti {
       position: fixed;
       font-size: 20px;
-      pointer-events: none; /* buttons remain clickable */
+      pointer-events: none;
       z-index: 1;
     }
 
@@ -69,7 +69,7 @@
 <body>
 
   <!-- Background Music -->
-  <audio id="bgmusic" loop>
+  <audio id="bgmusic" autoplay loop>
     <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
   </audio>
 
@@ -128,9 +128,6 @@
       if (currentPage <= totalPages) {
         document.getElementById("page" + currentPage).classList.add("active");
       }
-      // Play music starting on page 2
-      if (currentPage === 2) document.getElementById("bgmusic").play();
-      // Trigger confetti on page 4
       if (currentPage === 4) startConfetti();
     }
 
@@ -152,7 +149,7 @@
     }
     setInterval(createHeart, 300);
 
-    // Sparkles only on page 2
+    // Sparkles on page 2
     function createSparkle() {
       if (currentPage !== 2) return;
       const sparkle = document.createElement("div");
@@ -165,7 +162,7 @@
     }
     setInterval(createSparkle, 400);
 
-    // Falling sunflower petals on page 2
+    // Sunflower petals on page 2
     function createPetal() {
       if (currentPage !== 2) return;
       const petal = document.createElement("div");
@@ -193,7 +190,6 @@
 
     // Confetti on page 4
     function startConfetti() {
-      const colors = ["#ff66a3","#ffcc00","#ff99bb","#ff85b3","#ff6699"];
       for(let i=0;i<50;i++){
         const confetti = document.createElement("div");
         confetti.classList.add("confetti");
@@ -208,7 +204,7 @@
       }
     }
 
-    // Background gradient animation
+    // Background gradient
     let colors = ["#ffe6f2", "#fff0f5", "#ffd6e8", "#ffe0f0"];
     let index = 0;
     setInterval(() => {
@@ -216,7 +212,7 @@
         `linear-gradient(to bottom, ${colors[index]}, ${colors[(index+1)%colors.length]})`;
       index = (index + 1) % colors.length;
     }, 4000);
-
   </script>
+
 </body>
 </html>
