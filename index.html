@@ -37,7 +37,7 @@
       margin: 10px;
       transition: 0.3s;
       position: relative;
-      z-index: 10; /* make sure buttons are above hearts */
+      z-index: 10; /* buttons on top */
     }
 
     button:hover { transform: scale(1.1); }
@@ -46,15 +46,17 @@
       position: fixed;
       font-size: 20px;
       animation: float 5s linear infinite;
-      pointer-events: none; /* very important so buttons are clickable */
+      pointer-events: none; /* allows clicking buttons */
       z-index: 1;
     }
 
+    /* Floating animation for hearts or sparkles */
     @keyframes float {
       0% { transform: translateY(100vh); opacity: 1; }
       100% { transform: translateY(-10vh); opacity: 0; }
     }
 
+    /* Glow animation for bouquet */
     @keyframes glow {
       from { box-shadow: 0 0 20px rgba(255, 204, 0, 0.4); }
       to { box-shadow: 0 0 40px rgba(255, 204, 0, 0.9); }
@@ -98,7 +100,8 @@
     <h1>About Your Beauty 😍</h1>
     <p>
       Your smile lights up my darkest days, your eyes hold endless stories, 
-      and your soul is pure magic. You are breathtaking in every way 💖
+      and your soul is pure magic. Simply put, you are breathtaking in every way, 
+      those beautiful cheeks ufff omgg and the hair wow I love every part that belongs to your body 💖
     </p>
     <br>
     <button onclick="nextPage()">Next 💕</button>
@@ -107,12 +110,13 @@
   <!-- Page 4 -->
   <section id="page4">
     <h1>My Love Letter ✨</h1>
-    <p>Dear love,</p>
     <p>
-      Every moment with you feels like a dream.  
-      I promise to cherish you, support you, and make you smile every single day.  
-      You are my everything. 💗
+      I just want you to know that every moment with you feels like a dream. 
+      You make me laugh, you make me think, and most importantly, you make me feel alive. 
+      I promise to cherish you, support you, and make you smile every single day. 
+      You are my sweetheart, my soul, my jaan, my everything. 💗
     </p>
+    <p>I love you with the full of my heart baby ❤️</p>
     <p>Forever yours, <br> Afraz 💖</p>
   </section>
 
@@ -183,3 +187,4 @@
 
 </body>
 </html>
+
