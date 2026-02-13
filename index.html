@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>For You 💖</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive;
+      overflow: hidden;
+      transition: background 2s;
+    }
+
+    section {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      padding-top: 100px;
+      opacity: 0;
+      transition: opacity 2s;
+    }
+    section.active { opacity: 1; }
+
+    h1 { font-size: 40px; color: #ff66a3; }
+    p { font-size: 18px; color: #ff85b3; max-width: 600px; margin: 20px auto; }
+
+    .heart, .flower, .click-heart {
+      position: fixed;
+      font-size: 20px;
+      animation: float 5s linear infinite;
+      pointer-events: none;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh); opacity: 1; }
+      100% { transform: translateY(-10vh); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background music -->
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Page 1 -->
+  <section class="active" id="page1">
+    <h1>Will You Be My Valentine tashfia? 💕</h1>
+    <p>You make my world softer and sweeter every day 🥺💖</p>
+  </section>
+
+  <!-- Page 2 -->
+  <section id="page2">
+    <h1>Beautiful Flowers for You 🌸</h1>
+    <p>"Every flower is a soul blossoming in nature, just like your heart blossoms in mine." 💐</p>
+  </section>
+
+  <!-- Page 3 -->
+  <section id="page3">
+    <h1>About Your Beauty 😍</h1>
+    <p>Your smile lights up my darkest days, your eyes hold endless stories, and your soul is pure magic. Simply put, you are breathtaking in every way , those beattiful cheeks ufff omgg and the hair wow i love every part that belongs to your body💖</p>
+  </section>
+
+  <!-- Page 4 -->
+  <section id="page4">
+    <h1>My Love Letter ✨</h1>
+    <p>Dear love,</p>
+    <p>I just want you to know that every moment with you feels like a dream. You make me laugh, you make me think, and most importantly, you make me feel alive. I promise to cherish you, support you, and make you smile every single day. You are my sweetheart, my soul,my jaan, my everything. 💗</p>
+    <p>Forever yours, <br> [Afraz]</p>
+  </section>
+
+  <script>
+    let currentPage = 1;
+    const totalPages = 4;
+
+    // Auto page transition every 6 seconds
+    setInterval(() => {
+      document.getElementById("page" + currentPage).classList.remove("active");
+      currentPage = currentPage % totalPages + 1;
+      document.getElementById("page" + currentPage).classList.add("active");
+    }, 6000);
+
+    // Floating hearts
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.classList.add("heart");
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+    setInterval(createHeart, 300);
+
+    // Flowers for page 2
+    function createFlower() {
+      if (currentPage !== 2) return;
+      const flower = document.createElement("div");
+      flower.classList.add("flower");
+      flower.innerHTML = "🌸";
+      flower.style.left = Math.random() * 100 + "vw";
+      flower.style.animationDuration = (Math.random() * 4 + 2) + "s";
+      document.body.appendChild(flower);
+      setTimeout(() => flower.remove(), 6000);
+    }
+    setInterval(createFlower, 500);
+
+    // Click hearts
+    document.body.addEventListener("click", function(e){
+      const clickHeart = document.createElement("div");
+      clickHeart.classList.add("click-heart");
+      clickHeart.innerHTML = "💖";
+      clickHeart.style.left = e.clientX + "px";
+      clickHeart.style.top = e.clientY + "px";
+      clickHeart.style.fontSize = Math.random() * 30 + 15 + "px";
+      document.body.appendChild(clickHeart);
+      setTimeout(() => clickHeart.remove(), 1000);
+    });
+
+    // Background gradient animation
+    let colors = ["#ffe6f2", "#fff0f5", "#ffd6e8", "#ffe0f0"];
+    let index = 0;
+    setInterval(() => {
+      document.body.style.background = `linear-gradient(to bottom, ${colors[index]}, ${colors[(index+1)%colors.length]})`;
+      index = (index + 1) % colors.length;
+    }, 4000);
+  </script>
+
+</body>
+</html>
