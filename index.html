@@ -36,6 +36,8 @@
       cursor: pointer;
       margin: 10px;
       transition: 0.3s;
+      position: relative;
+      z-index: 10; /* make sure buttons are above hearts */
     }
 
     button:hover { transform: scale(1.1); }
@@ -44,28 +46,25 @@
       position: fixed;
       font-size: 20px;
       animation: float 5s linear infinite;
-      pointer-events: none;
+      pointer-events: none; /* very important so buttons are clickable */
+      z-index: 1;
     }
 
-    /* Floating animation for hearts or sparkles */
     @keyframes float {
       0% { transform: translateY(100vh); opacity: 1; }
       100% { transform: translateY(-10vh); opacity: 0; }
     }
 
-    /* Glow animation for bouquet */
     @keyframes glow {
       from { box-shadow: 0 0 20px rgba(255, 204, 0, 0.4); }
       to { box-shadow: 0 0 40px rgba(255, 204, 0, 0.9); }
     }
 
-    /* Bouquet styling */
     .bouquet {
       font-size: 60px;
       margin-top: 30px;
       animation: glow 2s infinite alternate;
     }
-
   </style>
 </head>
 <body>
