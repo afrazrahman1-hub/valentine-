@@ -42,10 +42,9 @@
 
     button:hover { transform: scale(1.1); }
 
-    .heart, .sparkle, .click-heart {
+    .heart, .sparkle, .click-heart, .petal {
       position: fixed;
       font-size: 20px;
-      animation: float 5s linear infinite;
       pointer-events: none; /* allows clicking buttons */
       z-index: 1;
     }
@@ -75,7 +74,6 @@
   <section class="active" id="page1">
     <h1>Will You Be My Valentine Tashfia? 💕</h1>
     <p>You make my world softer and sweeter every day 🥺💖</p>
-
     <button onclick="nextPage()">YES 💖</button>
     <button onmouseover="moveNo(this)" style="background:#ff99bb;">NO 😜</button>
   </section>
@@ -84,13 +82,11 @@
   <section id="page2">
     <h1>A Bouquet of Sunflowers for You 🌻</h1>
     <p>Just like sunflowers turn toward the sun, my heart turns toward you 💛</p>
-
     <div class="bouquet">
       🌻🌻🌻<br>
       🌻🌻🌻🌻<br>
       🌻🌻🌻
     </div>
-
     <br>
     <button onclick="nextPage()">Next 💕</button>
   </section>
@@ -143,7 +139,7 @@
       heart.classList.add("heart");
       heart.innerHTML = "💖";
       heart.style.left = (Math.random() * 100) + "vw";
-      heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      heart.style.animation = `float ${(Math.random()*3+2)}s linear forwards`;
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 5000);
     }
@@ -156,11 +152,25 @@
       sparkle.classList.add("sparkle");
       sparkle.innerHTML = "✨";
       sparkle.style.left = (Math.random() * 100) + "vw";
-      sparkle.style.animationDuration = (Math.random() * 4 + 2) + "s";
+      sparkle.style.animation = `float ${(Math.random()*4+2)}s linear forwards`;
       document.body.appendChild(sparkle);
       setTimeout(() => sparkle.remove(), 5000);
     }
     setInterval(createSparkle, 400);
+
+    // Falling sunflower petals on page 2
+    function createPetal() {
+      if (currentPage !== 2) return;
+      const petal = document.createElement("div");
+      petal.classList.add("petal");
+      petal.innerHTML = "🌻";
+      petal.style.left = (Math.random() * 100) + "vw";
+      petal.style.fontSize = (Math.random()*40 + 20) + "px";
+      petal.style.animation = `float ${(Math.random()*5 + 3)}s linear forwards`;
+      document.body.appendChild(petal);
+      setTimeout(() => petal.remove(), 6000);
+    }
+    setInterval(createPetal, 600);
 
     // Click hearts
     document.body.addEventListener("click", function(e){
@@ -186,4 +196,3 @@
 
 </body>
 </html>
-
